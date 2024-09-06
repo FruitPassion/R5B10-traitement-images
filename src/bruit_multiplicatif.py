@@ -5,7 +5,7 @@ from time import time
 # std_dev = 0.1 # Écart type (contrôle l'intensité du bruit)
 
 
-def add_gaussian_noise(pixel_value, mean, std_dev):
+def bruit_multiplicatif(pixel_value, mean, std_dev) -> int:
     # Générer un bruit gaussien
     seed = int(time())
     rng = np.random.default_rng(seed)
@@ -17,4 +17,4 @@ def add_gaussian_noise(pixel_value, mean, std_dev):
     # Limiter la valeur du pixel bruité entre 0 et 255
     noisy_pixel_value = np.clip(noisy_pixel_value, 0, 255)
 
-    return noisy_pixel_value
+    return int(noisy_pixel_value)

@@ -5,7 +5,7 @@ from time import time
 # std_dev = 10  # Déviation standard de 10
 
 
-def add_gaussian_noise(pixel_value, mean, std_dev):
+def bruit_additif(pixel_value, mean, std_dev):
     # Générer un bruit gaussien
     seed = int(time())
     rng = np.random.default_rng(seed)
