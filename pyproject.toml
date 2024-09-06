@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "R5.B10-traitement-image"
+version = "0.1.0"
+description = ""
+authors = ["Username Name <you@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+black = "^24.3.0"
+isort = "^5.13.2"
+build = "^1.0.3"
+twine = "^4.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 200
