@@ -1,11 +1,11 @@
 import skimage as ski
 import random as rd
-
-def pepperSaltGrain (inputImagePath):
-    image = ski.io.imread(inputImagePath)
-    for i in range(0, len(image)):
-        for j in range(0, len(image[i])):
-            image[i][j] = pepperSaltGrainEachPixel(image[i][j])
+#proablement à supprimer
+# def pepperSaltGrain (inputImagePath):
+#     image = ski.io.imread(inputImagePath)
+#     for i in range(0, len(image)):
+#         for j in range(0, len(image[i])):
+#             image[i][j] = pepperSaltGrainEachPixel(image[i][j])
     
 def pepperSaltGrainEachPixel(pixel: int)->int:
     salt, pepper = False
