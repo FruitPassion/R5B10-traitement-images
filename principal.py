@@ -24,13 +24,15 @@ if arg == 'additif':
 elif arg == 'mutiplicatif':
     mean = 1
     std_dev = 0.1
+elif arg == 'poivre_et_sel':
+    rate = 10
 
 noisy_image = np.zeros_like(image)
 
 for i in range(image.shape[0]):
     for j in range(image.shape[1]):
         if arg == 'poivre_et_sel':
-            noisy_image[i, j] = pepperSaltGrainEachPixel(image[i, j])
+            noisy_image[i, j] = pepperSaltGrainEachPixel(image[i, j], rate)
         elif arg == 'additif':
             noisy_image[i, j] = bruit_additif(image[i, j], mean, std_dev)
         elif arg == 'multiplicatif':
