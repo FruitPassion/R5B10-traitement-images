@@ -11,18 +11,17 @@ arg = sys.argv[1]
 if arg not in ['additif', 'multiplicatif', 'poivre_et_sel']:
     print("Argument invalide")
     sys.exit()
-print(arg)
 
-image = io.imread('images_reference/image_reference1.png')
+image = io.imread('images_reference/lenaNB.tiff')
 image = img_as_float(image)
 
 mean = None
 std_dev = None
 if arg == 'additif':
     mean = 0
-    std_dev = 10
-elif arg == 'mutiplicatif':
-    mean = 1
+    std_dev = 0.1
+elif arg == 'multiplicatif':
+    mean = -0.7
     std_dev = 0.1
 
 noisy_image = np.zeros_like(image)
@@ -39,7 +38,7 @@ for i in range(image.shape[0]):
 noisy_image = np.clip(noisy_image, 0, 1)
 noisy_image_uint8 = img_as_ubyte(noisy_image)
 
-name = f"out/image_bruitee_multiplicatif_{time()}.png"
+name = f"out/image_bruitee_{arg}_{time()}.png"
 io.imsave(name, noisy_image_uint8)
 
 fig, ax = plt.subplots(1, 2, figsize=(10, 5))
