@@ -7,9 +7,10 @@ import random as rd
 #         for j in range(0, len(image[i])):
 #             image[i][j] = pepperSaltGrainEachPixel(image[i][j])
     
-def pepperSaltGrainEachPixel(pixel: int)->int:
+def pepperSaltGrainEachPixel(pixel: int, rate: int)->int:
     salt, pepper = False
-    if rd.randint(0, 1000) <= 2:
+    # default rate value 1000 ->> 0.1% of the pixels will be affected
+    if rd.randint(0, rate) <= 2:
         if  rd.randint(0, 1) == 0:
             pixel = 0 # salt
         else:
