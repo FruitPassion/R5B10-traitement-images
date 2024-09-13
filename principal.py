@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from src.bruit_additif import bruit_additif
 from src.bruit_multiplicatif import bruit_multiplicatif
 from src.saltPepperGrain import pepperSaltGrainEachPixel
+from src.snr import getSNR
 from time import time
 import sys
 
@@ -38,12 +39,12 @@ for i in range(image.shape[0]):
         elif arg == 'multiplicatif':
             noisy_image[i, j] = bruit_multiplicatif(image[i, j], mean, std_dev)
 
+
 noisy_image = np.clip(noisy_image, 0, 1)
 noisy_image_uint8 = img_as_ubyte(noisy_image)
-
+print(getSNR(image, noisy_image_uint8))
 name = f"out/image_bruitee_multiplicatif_{time()}.png"
 io.imsave(name, noisy_image_uint8)
-
 fig, ax = plt.subplots(1, 2, figsize=(10, 5))
 ax[0].imshow(image, cmap='gray')
 ax[0].set_title("Image Originale")
