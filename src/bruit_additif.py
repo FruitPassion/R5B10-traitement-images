@@ -1,8 +1,4 @@
 import numpy as np
-from time import time
-
-# mean = 0  # Centré sur 0 (pas de biais)
-# std_dev = 10  # Déviation standard de 10
 
 
 def bruit_additif(pixel_value, mean, std_dev):
