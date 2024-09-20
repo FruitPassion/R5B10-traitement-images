@@ -1,8 +1,4 @@
 import numpy as np
-from time import time
-
-# mean = 1 # Bruit multiplicatif autour de 1 (pas de changement moyen)
-# std_dev = 0.1 # Écart type (contrôle l'intensité du bruit)
 
 
 def bruit_multiplicatif(pixel_value, mean, std_dev) -> float:
