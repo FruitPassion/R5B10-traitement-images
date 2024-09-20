@@ -12,7 +12,6 @@ arg = sys.argv[1]
 if arg not in ['additif', 'multiplicatif', 'poivre_et_sel']:
     print("Argument invalide")
     sys.exit()
-print(arg)
 
 image = io.imread('images_reference/image_reference1.png')
 imagei = io.imread('images_reference/image1_bruitee_snr_9.2885.png')
@@ -22,9 +21,9 @@ mean = None
 std_dev = None
 if arg == 'additif':
     mean = 0
-    std_dev = 10
-elif arg == 'mutiplicatif':
-    mean = 1
+    std_dev = 0.1
+elif arg == 'multiplicatif':
+    mean = -0.7
     std_dev = 0.1
 elif arg == 'poivre_et_sel':
     rate = 10
