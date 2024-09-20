@@ -15,6 +15,7 @@ if arg not in ['additif', 'multiplicatif', 'poivre_et_sel']:
 print(arg)
 
 image = io.imread('images_reference/image_reference1.png')
+imagei = io.imread('images_reference/image1_bruitee_snr_9.2885.png')
 image = img_as_float(image)
 
 mean = None
@@ -42,7 +43,9 @@ for i in range(image.shape[0]):
 
 noisy_image = np.clip(noisy_image, 0, 1)
 noisy_image_uint8 = img_as_ubyte(noisy_image)
-print(getSNR(image, noisy_image_uint8))
+
+print(getSNR(image, imagei))
+
 name = f"out/image_bruitee_multiplicatif_{time()}.png"
 io.imsave(name, noisy_image_uint8)
 fig, ax = plt.subplots(1, 2, figsize=(10, 5))
