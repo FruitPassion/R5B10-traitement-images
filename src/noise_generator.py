@@ -1,9 +1,9 @@
 import numpy as np
 
-from src.bruit_additif import bruit_additif
-from src.bruit_multiplicatif import bruit_multiplicatif
+from src.bruit.bruit_additif import bruit_additif
+from src.bruit.bruit_multiplicatif import bruit_multiplicatif
 from src.image_management import display_images, load_image, save_image
-from src.bruit_sel_poivre import salt_pepper_noise
+from src.bruit.bruit_sel_poivre import salt_pepper_noise
 
 
 def get_noise_settings(arg: str) -> dict:
