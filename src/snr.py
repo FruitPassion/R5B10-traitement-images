@@ -15,5 +15,4 @@ def get_snr(imageSignal, imageBruit):
             bruit += imageBruit[i, j]**2
           
     print("signal : ", signal, "\n", "bruit : ", bruit)
-    print(imageSignal[1, 1]**2)
     return 10 * log10(signal/bruit)
