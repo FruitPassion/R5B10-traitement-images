@@ -16,7 +16,7 @@ def apply_noise(image: np.ndarray, noise_function: callable, **kwargs) -> np.nda
     """Applique la fonction de bruitage sélectionnée à chaque pixel de l'image."""
     noisy_image = np.zeros_like(image)
     for i in range(image.shape[0]):
-        for j in range(image.shape[1]):
+        for j in range(image.shape[0]):
             noisy_image[i, j] = noise_function(image[i, j], **kwargs)
     return np.clip(noisy_image, 0, 1)
 
