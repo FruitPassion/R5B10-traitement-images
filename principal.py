@@ -3,7 +3,7 @@ from skimage import io, img_as_float, img_as_ubyte
 import matplotlib.pyplot as plt
 from src.bruit_additif import bruit_additif
 from src.bruit_multiplicatif import bruit_multiplicatif
-from src.saltPepperGrain import pepperSaltGrainEachPixel
+from src.bruit_sel_poivre import salt_pepper_noise
 from src.snr import getSNR
 from time import time
 import sys
@@ -33,7 +33,7 @@ noisy_image = np.zeros_like(image)
 for i in range(image.shape[0]):
     for j in range(image.shape[1]):
         if arg == 'poivre_et_sel':
-            noisy_image[i, j] = pepperSaltGrainEachPixel(image[i, j], rate)
+            noisy_image[i, j] = salt_pepper_noise(image[i, j], rate)
         elif arg == 'additif':
             noisy_image[i, j] = bruit_additif(image[i, j], mean, std_dev)
         elif arg == 'multiplicatif':

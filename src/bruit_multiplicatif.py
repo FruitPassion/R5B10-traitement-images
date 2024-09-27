@@ -1,8 +1,10 @@
 import numpy as np
 
+from src.gaussian_noise import get_gaussian_noise
 
-def bruit_multiplicatif(pixel_value, mean, std_dev) -> float:
-    gaussian_noise = np.random.normal(mean, std_dev)
+
+def bruit_multiplicatif(pixel_value: float, mean: float, std_dev: float) -> float:
+    gaussian_noise = get_gaussian_noise(mean, std_dev)
 
     # Multiplier le bruit gaussien à la valeur du pixel
     noisy_pixel_value = pixel_value * (1 + gaussian_noise)

@@ -1,8 +1,10 @@
 import numpy as np
 
+from src.gaussian_noise import get_gaussian_noise
 
-def bruit_additif(pixel_value, mean, std_dev):
-    gaussian_noise = np.random.normal(mean, std_dev)
+
+def bruit_additif(pixel_value: float, mean: float, std_dev: float) -> float:
+    gaussian_noise = get_gaussian_noise(mean, std_dev)
 
     # Ajouter le bruit gaussien à la valeur du pixel
     noisy_pixel_value = pixel_value + gaussian_noise
