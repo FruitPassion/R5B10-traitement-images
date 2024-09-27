@@ -9,6 +9,7 @@ package-mode = false
 python = "^3.11"
 scikit-image = "^0.24.0"
 matplotlib = "^3.9.2"
+simple-term-menu = "^1.6.4"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
