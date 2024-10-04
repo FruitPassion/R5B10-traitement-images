@@ -47,6 +47,7 @@ def menu_utiles():
         elif menu == 0:
             import os
             import shutil
+
             shutil.rmtree("out")
             os.mkdir("out")
             # add .gitkeep file to keep the directory in git

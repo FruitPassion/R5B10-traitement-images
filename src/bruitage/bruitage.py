@@ -3,8 +3,8 @@ from tqdm import tqdm
 
 from src.bruitage.bruit_additif import bruit_additif
 from src.bruitage.bruit_multiplicatif import bruit_multiplicatif
-from src.image_management import display_images, load_image, save_image
 from src.bruitage.bruit_sel_poivre import salt_pepper_noise
+from src.image_management import display_images, load_image, save_image
 
 
 def get_noise_settings(arg: str) -> dict:
