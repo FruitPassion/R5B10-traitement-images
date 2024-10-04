@@ -66,7 +66,7 @@ def main() -> None:
         elif menu == 1:
             menu_debruitage()
         elif menu == 2:
-            menu_debruitage()
+            print("Calcul du SNR à implémenter")
         elif menu == 3:
             menu_utiles()
         else:
