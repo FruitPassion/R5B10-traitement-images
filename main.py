@@ -25,15 +25,17 @@ def menu_bruitage():
 
 
 def menu_debruitage():
-    options = {0: ("m", "Médian"), 1: ("q", "Quitter")}
+    options = {0: ("m", "Médian"), 1: ("c", "Convultion"), 2: ("q", "Quitter")}
 
     while True:
         menu = generate_menu(options, "Choix du debruitage")
 
-        if menu == 1:
+        if menu == 2:
             break
-        elif menu == 0:
-            denoising_img()
+        elif menu < 2:
+            arg, denoise_name = options[menu]
+            print(f"Débruitage par filtre {denoise_name}")
+            denoising_image(arg, denoise_name)
 
 
 def menu_utiles():
