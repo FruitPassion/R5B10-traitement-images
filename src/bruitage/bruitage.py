@@ -27,9 +27,9 @@ def apply_noise(image: np.ndarray, noise_function: callable, **kwargs) -> np.nda
     return np.clip(noisy_image, 0, 1)
 
 
-def generate_noisy_image(arg: str, noise_name: str) -> None:
+def generate_noisy_image(arg: str, noise_name: str, image_path: str) -> None:
     """Génerer une image bruitée en fonction du type de bruit sélectionné."""
-    image = load_image("images_reference/image_reference1.png")
+    image = load_image(image_path)
     settings = get_noise_settings(arg)
 
     noise_functions = {
