@@ -1,6 +1,7 @@
 import os
 
-from simple_term_menu import TerminalMenu
+from InquirerPy.separator import Separator
+from InquirerPy import prompt
 
 
 def list_files(directory="."):
@@ -9,5 +10,17 @@ def list_files(directory="."):
 
 
 def generate_menu(options: dict, title: str) -> int:
-    menu = TerminalMenu([f"[{v[0]}] {v[1]}" for v in options.values()], title=title)
-    return menu.show()
+    choices = [{"name": f"{v[1]}", "value": i} for i, v in options.items()]
+    choices.append({"name": Separator(), "value": None})
+    choices.append({"name": "Quitter", "value": len(options)})
+
+    question = [
+        {
+            "type": "list",
+            "name": "menu_choice",
+            "message": title,
+            "choices": choices,
+        }
+    ]
+    answer = prompt(question)
+    return answer["menu_choice"]
