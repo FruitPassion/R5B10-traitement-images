@@ -10,7 +10,7 @@ def get_snr(image_bruit, image_signal):
     signal, bruit = 0, 0
 
     if image_signal.shape != image_bruit.shape:
-        raise ValueError("Les deux images doivent avoir la même taille")
+        raise ValueError("\nLes deux images doivent avoir la même taille\n")
 
     for i in range(image_signal.shape[0]):
         for j in range(image_signal.shape[0]):

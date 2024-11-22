@@ -29,7 +29,7 @@ def menu_choix_image(nom_menu: str = "Choix de l'image") -> str:
     if image_path == "q - Quitter":
         return "q - Quitter"
     else:
-        print(f"Image sélectionnée: {image_path}")
+        print(f"\nImage sélectionnée: {image_path}\n")
         return image_path
 
 
@@ -43,7 +43,7 @@ def menu_bruitage():
             arg, noise_name = options[menu]
             image_path = menu_choix_image()
             if image_path != "q - Quitter":
-                print(f"Génération bruit {noise_name}")
+                print(f"\nGénération bruit {noise_name}\n")
                 generate_noisy_image(arg, noise_name, image_path)
         else:
             break
@@ -59,7 +59,7 @@ def menu_debruitage():
             arg, denoise_name = options[menu]
             image_path = menu_choix_image()
             if image_path != "q - Quitter":
-                print(f"Débruitage par filtre {denoise_name}")
+                print(f"\nDébruitage par filtre {denoise_name}\n")
                 denoising_image(arg, denoise_name, image_path)
         else:
             break
@@ -78,7 +78,7 @@ def menu_utiles():
             shutil.rmtree("out")
             os.mkdir("out")
             open("out/.gitkeep", "w").close()
-            print("Dossier out vidé.")
+            print("\nDossier out vidé.\n")
         else:
             break
 
@@ -104,7 +104,7 @@ def main() -> None:
         elif menu == 2:
             menu_calcul_snr()
         elif menu == 3:
-            print("Détection des contours à implémenter")
+            print("\nDétection des contours à implémenter\n")
         elif menu == 4:
             menu_utiles()
         else:

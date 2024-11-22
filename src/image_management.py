@@ -16,7 +16,7 @@ def save_image(image: np.ndarray, arg: str) -> None:
     timestamp = int(time.time())
     filename = f"out/image_{arg}_{timestamp}.png"
     io.imsave(filename, img_as_ubyte(image))
-    print(f"Image sauvegardée dans {filename}")
+    print(f"\nImage sauvegardée dans {filename}\n")
 
 
 def display_images(original: np.ndarray, noisy: np.ndarray, noise_action: str, noise_type: str) -> None:
