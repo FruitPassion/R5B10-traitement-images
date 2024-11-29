@@ -4,6 +4,13 @@ from src.gaussian_noise import get_gaussian_noise
 
 
 def bruit_multiplicatif(pixel_value: float, mean: float, std_dev: float) -> float:
+    """ Ajoute du bruit multiplicatif à un pixel.
+
+    Args:
+        pixel_value (float): Valeur du pixel.
+        mean (float): Moyenne de la distribution du bruit gaussien.
+        std_dev (float): Écart-type de la distribution du bruit gaussien.
+    """
     gaussian_noise = get_gaussian_noise(mean, std_dev)
 
     # Multiplier le bruit gaussien à la valeur du pixel

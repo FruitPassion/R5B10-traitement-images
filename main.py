@@ -1,11 +1,13 @@
 #!.venv/bin/python3
-from InquirerPy import prompt
+from InquirerPy import prompt, inquirer
+from InquirerPy.validator import NumberValidator
 
 from src.bruitage.bruitage import generate_noisy_image
 from src.debruitage.debruitage import denoising_image
 from src.terminal_utils import list_files, generate_menu
 from src.snr import get_snr
 from skimage import io
+from src.test_complet import test_complet
 
 
 def menu_choix_image(nom_menu: str = "Choix de l'image") -> str:
@@ -41,10 +43,21 @@ def menu_bruitage():
 
         if menu < 3:
             arg, noise_name = options[menu]
+            if arg == "p":
+                rate: int = inquirer.text(message="Entrez le taux de bruitage (entre 0 et 100) : ", validate=NumberValidator()).execute()
+            elif arg == "a" or arg == "m":
+                mean: float = inquirer.text(message="Entrez la moyenne du bruit: ", validate=NumberValidator(float_allowed=True)).execute()
+                std_dev: float = inquirer.text(message="Entrez l'écart-type du bruit (jusqu'a 0.1): ", validate=NumberValidator(float_allowed=True)).execute()
+
             image_path = menu_choix_image()
             if image_path != "q - Quitter":
                 print(f"\nGénération bruit {noise_name}\n")
-                generate_noisy_image(arg, noise_name, image_path)
+                if arg == "p":
+                    generate_noisy_image(arg, noise_name, image_path, display=True, rate=rate)
+                elif arg == "a":
+                    generate_noisy_image(arg, noise_name, image_path, display=True, mean=mean, std_dev=std_dev)
+                elif arg == "m":
+                    generate_noisy_image(arg, noise_name, image_path, display=True, mean=mean, std_dev=std_dev)
         else:
             break
 
@@ -66,7 +79,7 @@ def menu_debruitage():
 
 
 def menu_utiles():
-    options = {0: ("v", "Vider dossier out")}
+    options = {0: ("v", "Vider dossier out"), 1: ("r", "Tester fonctionnalité")}
 
     while True:
         menu = generate_menu(options, "Choix de l'utilitaire")
@@ -79,6 +92,9 @@ def menu_utiles():
             os.mkdir("out")
             open("out/.gitkeep", "w").close()
             print("\nDossier out vidé.\n")
+        elif menu == 1:
+            print("\nTest complet des fonctionnalités\n")
+            test_complet()
         else:
             break
 

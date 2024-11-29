@@ -1,9 +1,16 @@
 from math import log10
+from numpy import ndarray
 
 from skimage import img_as_float
 
 
-def get_snr(image_bruit, image_signal):
+def get_snr(image_bruit: ndarray, image_signal: ndarray) -> float:
+    """ Calcule le rapport signal sur bruit entre deux images.
+
+    Args:
+        image_bruit (ndarray): Image bruitée.
+        image_signal (ndarray): Image de référence sans bruit.
+    """
     image_signal = img_as_float(image_signal)
     image_bruit = img_as_float(image_bruit)
     image_bruit = image_bruit - image_signal
@@ -17,5 +24,4 @@ def get_snr(image_bruit, image_signal):
             signal += image_signal[i, j] ** 2
             bruit += image_bruit[i, j] ** 2
 
-    # print("signal : ", signal, "\n", "bruit : ", bruit)
     return 10 * log10(signal / bruit)
